@@ -503,6 +503,12 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
 .pv-arrows button:hover,.pv-close:hover{background:var(--fg);color:var(--linen);border-color:var(--fg)}
 .pv-close:hover{transform:rotate(90deg)}
 .pv-arrows svg,.pv-close svg{width:16px;height:16px}
+.pv-shots{display:flex;align-items:center;gap:8px;min-width:0;flex:0 1 auto}
+.pv-shots button{flex:0 1 46px;min-width:22px;height:34px;padding:0;border:0;overflow:hidden;background:var(--linen);opacity:.5;outline:1px solid transparent;outline-offset:3px;transition:opacity .4s,outline-color .4s}
+.pv-shots button img{display:block;width:100%;height:100%;object-fit:cover}
+.pv-shots button:hover{opacity:.85}
+.pv-shots button[aria-current="true"]{opacity:1;outline-color:var(--fg)}
+.pv.multi .pv-hint{display:none}
 .pv-info{display:flex;flex-direction:column;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:calc(28px + env(safe-area-inset-top,0px)) max(clamp(24px,3.4vw,56px),env(safe-area-inset-right,0px)) calc(28px + env(safe-area-inset-bottom,0px)) clamp(24px,3.4vw,56px)}
 .pv-top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:clamp(16px,4vh,48px)}
 .pv-body{display:flex;flex-direction:column;align-items:flex-start}
@@ -539,6 +545,9 @@ fieldset{border:0;margin:0;padding:0;min-width:0}
   .pv-frame{inset:calc(16px + env(safe-area-inset-top,0px)) 16px 78px}
   .pv-media-ui{left:16px;right:16px;bottom:14px}
   .pv-hint{display:none}
+  .pv.multi .pv-media-ui{gap:10px}
+  .pv-shots{gap:6px}
+  .pv-shots button{flex-basis:34px;height:26px;outline-offset:2px}
   .pv-info{overflow:visible;padding:26px 16px calc(32px + env(safe-area-inset-bottom,0px))}
   .pv-top{position:fixed;top:calc(24px + env(safe-area-inset-top,0px));right:24px;margin:0;z-index:3}
   .pv-top .label{display:none}
@@ -803,8 +812,8 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
         </div>
 
         <article class="work" data-work="1">
-          <figure class="work-media wide" data-cursor="Abrir" data-lb="projetos" data-src="img/casa-alphaville.webp" data-pid="alphaville" data-title="Casa Alphaville" style="margin:0">
-            <img src="img/casa-alphaville.webp" alt="Casa Alphaville: pórtico em mármore preto, forro de madeira e iluminação em linhas" loading="lazy">
+          <figure class="work-media wide" data-cursor="Abrir" data-lb="projetos" data-src="img/proj-alphaville-1.jpg" data-gallery="img/proj-alphaville-1.jpg|img/proj-alphaville-2.jpg" data-pid="alphaville" data-title="Casa Alphaville" style="margin:0">
+            <img src="img/proj-alphaville-1.jpg" alt="Casa Alphaville: pórtico em mármore preto, forro de madeira e iluminação em linhas" loading="lazy">
           </figure>
           <div class="work-info">
             <h3>Casa Alphaville</h3>
@@ -813,8 +822,8 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
         </article>
 
         <article class="work" data-work="2">
-          <figure class="work-media sq arch" data-cursor="Abrir" data-lb="projetos" data-src="img/casa-ametista.webp" data-pid="ametista" data-title="Casa Ametista" style="margin:0">
-            <img src="img/casa-ametista.webp" alt="Casa Ametista: volumes em concreto, pedra natural e ripado de madeira" loading="lazy">
+          <figure class="work-media sq arch" data-cursor="Abrir" data-lb="projetos" data-src="img/proj-ametista-1.jpg" data-gallery="img/proj-ametista-1.jpg|img/proj-ametista-2.jpg|img/proj-ametista-3.jpg|img/proj-ametista-4.jpg" data-pid="ametista" data-title="Casa Ametista" style="margin:0">
+            <img src="img/proj-ametista-1.jpg" alt="Casa Ametista: volumes em concreto, pedra natural e ripado de madeira" loading="lazy">
           </figure>
           <div class="work-info">
             <h3>Casa Ametista</h3>
@@ -823,8 +832,8 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
         </article>
 
         <article class="work" data-work="3">
-          <figure class="work-media tall" data-cursor="Abrir" data-lb="projetos" data-src="img/casa-esmeralda.webp" data-pid="esmeralda" data-title="Casa Esmeralda" style="margin:0">
-            <img src="img/casa-esmeralda.webp" alt="Casa Esmeralda: fachada térrea com pano de vidro, madeira e pedra" loading="lazy" style="object-position:40% center">
+          <figure class="work-media tall" data-cursor="Abrir" data-lb="projetos" data-src="img/proj-esmeralda-1.jpg" data-gallery="img/proj-esmeralda-1.jpg|img/proj-esmeralda-2.jpg|img/proj-esmeralda-3.jpg" data-pid="esmeralda" data-title="Casa Esmeralda" style="margin:0">
+            <img src="img/proj-esmeralda-1.jpg" alt="Casa Esmeralda: fachada térrea com pano de vidro, madeira e pedra" loading="lazy" style="object-position:40% center">
           </figure>
           <div class="work-info">
             <h3>Casa Esmeralda</h3>
@@ -1153,6 +1162,7 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
     <div class="pv-frame" id="pvFrame"></div>
     <div class="pv-media-ui">
       <span class="pv-count" id="pvCount">01<small>/ 04</small></span>
+      <div class="pv-shots" id="pvShots" role="group" aria-label="Fotos do projeto"></div>
       <span class="pv-hint">Mova o cursor para explorar</span>
       <div class="pv-arrows">
         <button type="button" id="pvPrev" aria-label="Anterior"><svg style="transform:scaleX(-1)"><use href="#i-arr"/></svg></button>
@@ -1374,10 +1384,11 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
     mostra:{kind:'Mostra de arquitetura',sub:'Mediterrâneo Brasileiro',desc:'Ambiente assinado para a Mostra Glass: nichos em arco esculpidos, ilha com textura mineral e luminárias de palha, numa leitura brasileira do Mediterrâneo.',specs:[['arch','Ambiente','Espaço gourmet'],['leaf','Destaque','Conexão de materiais naturais'],['spark','Conceito','Mediterrâneo Brasileiro'],['cal','Evento','Mostra Glass'],['pen','Assinatura','Melyssa Chielle']],tagsLabel:'Curadoria de fornecedores',tags:['Nuance','Divina Brasilidade','Pró Revest','Matrezan'],type:'Interiores'}
   };
   const pv=$('#pv'), pvFrame=$('#pvFrame'), pvMedia=$('#pvMedia'), pvIndex=$('#pvIndex'), pvCta=$('#pvCta');
-  let pvSet=[], pvI=0, pvLast=null, pvBusy=false;
+  const pvShotsEl=$('#pvShots');
+  let pvSet=[], pvI=0, pvJ=0, pvLast=null, pvBusy=false;
   const svgUse=id=>{ const ns='http://www.w3.org/2000/svg'; const s=document.createElementNS(ns,'svg'); const u=document.createElementNS(ns,'use'); u.setAttribute('href','#i-'+id); s.appendChild(u); return s; };
   function pvData(el){
-    const im=$('img',el), base={title:el.dataset.title,src:el.dataset.src,alt:im.alt,pos:im.style.objectPosition,arch:el.classList.contains('arch')||el.classList.contains('t2')};
+    const im=$('img',el), base={title:el.dataset.title,src:el.dataset.src,shots:(el.dataset.gallery||el.dataset.src).split('|'),alt:im.alt,pos:im.style.objectPosition,arch:el.classList.contains('arch')||el.classList.contains('t2')};
     if(PV[el.dataset.pid]) return Object.assign(base,PV[el.dataset.pid]);
     const sub=$('figcaption span',el); const subT=sub?sub.textContent:'';
     return Object.assign(base,{kind:'Arquitetura de interiores',sub:subT,desc:im.alt+'.',specs:[['arch','Ambiente',el.dataset.title],['spark','Destaque',subT]],tagsLabel:'',tags:[],type:'Interiores'});
@@ -1392,14 +1403,32 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
     $('#pvCount').innerHTML=''; $('#pvCount').append(pad(pvI+1)); const sm=document.createElement('small'); sm.textContent='/ '+pad(pvSet.length); $('#pvCount').append(sm);
     $$('button',pvIndex).forEach((b,k)=>b.setAttribute('aria-current',k===pvI?'true':'false'));
   }
-  function pvShow(i,first){
-    if(pvBusy && !first) return; pvBusy=true; setTimeout(()=>pvBusy=false,700);
-    pvI=(i+pvSet.length)%pvSet.length; const d=pvData(pvSet[pvI]);
-    const im=document.createElement('img'); im.src=d.src; im.alt=d.alt; if(d.pos) im.style.objectPosition=d.pos;
+  function pvImg(d,first){
+    const n=d.shots.length, im=document.createElement('img'); im.src=d.shots[pvJ]; im.alt=n>1?d.alt+' (foto '+(pvJ+1)+' de '+n+')':d.alt; if(pvJ===0 && d.pos) im.style.objectPosition=d.pos;
     if(!first) im.className='enter';
     pvFrame.appendChild(im); pvFrame.classList.toggle('arch',d.arch);
     if(!first){ void im.offsetWidth; im.classList.add('go'); }
     const old=$$('img',pvFrame).slice(0,-1); setTimeout(()=>old.forEach(o=>o.remove()),1400);
+  }
+  function pvMark(){ $$('button',pvShotsEl).forEach((b,k)=>b.setAttribute('aria-current',k===pvJ?'true':'false')); }
+  function pvThumbs(d){
+    const n=d.shots.length; pvShotsEl.innerHTML=''; pv.classList.toggle('multi',n>1); if(n<2) return;
+    d.shots.forEach((src,k)=>{ const b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Foto '+(k+1)+' de '+n); const t=document.createElement('img'); t.src=src; t.alt=''; b.appendChild(t); b.addEventListener('click',()=>{ if(k!==pvJ) pvPhoto(k); }); pvShotsEl.appendChild(b); });
+    pvMark();
+  }
+  function pvPhoto(j){
+    if(pvBusy) return; pvBusy=true; setTimeout(()=>pvBusy=false,700);
+    pvJ=j; pvImg(pvData(pvSet[pvI]),false); pvMark();
+  }
+  function pvStep(dir){
+    const n=pvData(pvSet[pvI]).shots.length, j=pvJ+dir;
+    if(j>=0 && j<n) pvPhoto(j); else pvShow(pvI+dir,false,dir<0?-1:0);
+  }
+  function pvShow(i,first,j){
+    if(pvBusy && !first) return; pvBusy=true; setTimeout(()=>pvBusy=false,700);
+    pvI=(i+pvSet.length)%pvSet.length; const d=pvData(pvSet[pvI]);
+    pvJ=j<0?d.shots.length-1:0;
+    pvImg(d,first); pvThumbs(d);
     if(first) pvFill(d); else { pv.classList.add('swap'); setTimeout(()=>{ pvFill(d); pv.classList.remove('swap'); },330); }
   }
   function pvOpen(el,e){
@@ -1423,12 +1452,12 @@ html.js .rv-img.t2.in,html.js .rv-img.arch.in{clip-path:none;transform:none}
   $$('[data-lb]').forEach(el=>{ el.tabIndex=0; el.setAttribute('role','button'); el.setAttribute('aria-label','Ver detalhes: '+el.dataset.title);
     el.addEventListener('click',e=>pvOpen(el,e)); el.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pvOpen(el); } }); });
   $('#pvClose').addEventListener('click',pvClose);
-  $('#pvPrev').addEventListener('click',()=>pvShow(pvI-1)); $('#pvNext').addEventListener('click',()=>pvShow(pvI+1));
+  $('#pvPrev').addEventListener('click',()=>pvStep(-1)); $('#pvNext').addEventListener('click',()=>pvStep(1));
   pvCta.addEventListener('click',()=>{ pvClose(); });
-  addEventListener('keydown',e=>{ if(pv.hidden) return; if(e.key==='Escape') pvClose(); if(e.key==='ArrowRight') pvShow(pvI+1); if(e.key==='ArrowLeft') pvShow(pvI-1); });
+  addEventListener('keydown',e=>{ if(pv.hidden) return; if(e.key==='Escape') pvClose(); if(e.key==='ArrowRight') pvStep(1); if(e.key==='ArrowLeft') pvStep(-1); });
   if(fine && !reduce) pvMedia.addEventListener('mousemove',e=>{ const r=pvMedia.getBoundingClientRect(); pvFrame.style.setProperty('--px',(((e.clientX-r.left)/r.width-.5)*2).toFixed(3)); pvFrame.style.setProperty('--py',(((e.clientY-r.top)/r.height-.5)*2).toFixed(3)); });
   let psx=null; pvMedia.addEventListener('touchstart',e=>{ psx=e.touches[0].clientX; },{passive:true});
-  pvMedia.addEventListener('touchend',e=>{ if(psx===null) return; const dx=e.changedTouches[0].clientX-psx; if(Math.abs(dx)>50) pvShow(pvI+(dx<0?1:-1)); psx=null; });
+  pvMedia.addEventListener('touchend',e=>{ if(psx===null) return; const dx=e.changedTouches[0].clientX-psx; if(Math.abs(dx)>50) pvStep(dx<0?1:-1); psx=null; });
 
   /* Testimonials */
   const slides=$$('#slides .slide'), dotsW=$('#tDots'), testi=$('#depoimentos'); let ti=0, tTimer=null;
